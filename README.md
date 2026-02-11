@@ -1,68 +1,57 @@
-House Price Prediction Model
-This project implements a Machine Learning model to predict house prices using the California Housing Dataset. It explores the complete data science pipeline, including data ingestion, exploratory data analysis (EDA), feature engineering, model training, and hyperparameter tuning.
+# House Price Prediction Model
 
-📊 Project Overview
-The goal of this model is to predict the median_house_value for various districts in California based on features like median income, house age, location (latitude/longitude), and ocean proximity.
+This project implements a Machine Learning pipeline to predict house prices using the **California Housing Dataset**. It covers everything from data cleaning and exploratory data analysis (EDA) to feature engineering and hyperparameter tuning of a Random Forest model.
 
-🛠️ Tech Stack
-Language: Python
 
-Libraries: Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn
 
-Environment: Google Colab / Jupyter Notebook
+## 📊 Project Overview
+The objective is to predict the `median_house_value` for various districts in California. This is a regression task where we use geographical, demographic, and housing characteristics to estimate property values.
 
-🗂️ Dataset
-The model uses the California Housing Prices dataset from Kaggle.
+## 🛠️ Tech Stack
+* **Language:** Python 3.x
+* **Libraries:** * `pandas` & `numpy` (Data Manipulation)
+    * `matplotlib` & `seaborn` (Visualization)
+    * `scikit-learn` (Machine Learning & Preprocessing)
+* **Environment:** Jupyter Notebook / Google Colab
 
-Total Records: ~20,640 districts
+## 🗂️ Dataset
+The model uses the **California Housing Prices** dataset.
+* **Target Variable:** `median_house_value`
+* **Key Features:**
+    * `longitude` & `latitude`: Geographical location.
+    * `housing_median_age`: Age of the house.
+    * `median_income`: Median income of the residents.
+    * `ocean_proximity`: Distance/Location relative to the ocean.
+    * `total_rooms`, `total_bedrooms`, `population`, `households`.
 
-Key Features:
+## 🚀 Pipeline Steps
 
-median_income: Median income for households within a block.
+### 1. Data Cleaning
+* Identified and handled missing values in the `total_bedrooms` column.
+* Processed categorical data using **One-Hot Encoding** for the `ocean_proximity` feature.
 
-housing_median_age: Median age of a house within a block.
+### 2. Exploratory Data Analysis (EDA)
+* Visualized correlations using a heatmap to identify which features (like `median_income`) have the strongest impact on house prices.
+* Analyzed geographical distribution of prices using latitude and longitude scatter plots.
 
-ocean_proximity: Location of the house w.r.t ocean.
 
-total_rooms & total_bedrooms: Count of rooms/bedrooms in the block.
 
-Target Variable: median_house_value.
+### 3. Feature Engineering
+Improved the model's predictive power by creating derived features:
+* `bedroom_ratio`: The ratio of bedrooms to total rooms.
+* `household_rooms`: The average number of rooms per household.
 
-🚀 Workflow
-1. Data Preprocessing
-Missing Values: Handled missing data in total_bedrooms by dropping null entries.
+### 4. Model Training & Tuning
+* **Baseline:** Started with Linear Regression.
+* **Advanced Model:** Implemented a **Random Forest Regressor**.
+* **Optimization:** Used `GridSearchCV` to find the optimal hyperparameters for the Random Forest model (tuning `n_estimators` and `max_features`).
 
-Encoding: Categorical features like ocean_proximity were converted into numeric format using One-Hot Encoding.
+## 📈 Evaluation
+The model's performance was measured using:
+* **Root Mean Squared Error (RMSE):** To quantify the average prediction error in dollars.
+* **Cross-Validation:** To ensure the model generalizes well to unseen data.
 
-Scaling: Features were standardized using StandardScaler to improve model convergence.
-
-2. Feature Engineering
-Created new informative features to improve model accuracy:
-
-bedroom_ratio: Ratio of bedrooms to total rooms.
-
-household_rooms: Average number of rooms per household.
-
-3. Model Training
-Two primary algorithms were evaluated:
-
-Linear Regression: Used as a baseline model.
-
-Random Forest Regressor: An ensemble learning method used to capture non-linear relationships.
-
-4. Optimization
-Hyperparameter tuning was performed using GridSearchCV to find the best configuration for the Random Forest model (tuning n_estimators and max_features).
-
-📈 Evaluation
-The model's performance was evaluated using Mean Squared Error (MSE) and Root Mean Squared Error (RMSE) to measure the average error in price prediction.
-
-💻 How to Run
-Clone the repository:
-
-Bash
-git clone https://github.com/your-username/house-price-prediction.git
-Install dependencies:
-
-Bash
-pip install pandas numpy scikit-learn matplotlib seaborn
-Run the notebook: Open house_price_prediction_model.ipynb in Google Colab or Jupyter and run all cells.
+## 💻 How to Use
+1. **Clone the Repo:**
+   ```bash
+   git clone [https://github.com/your-username/house-price-prediction.git](https://github.com/your-username/house-price-prediction.git)
